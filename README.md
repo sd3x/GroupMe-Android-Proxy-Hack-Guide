@@ -10,7 +10,7 @@ On the computer with burp setup, navigate to `http://localhost:42069` to verify 
 This example will assume you have a GroupMe apk valid for the architecture of the android device or emulator you are using named `groupme.apk`. With apktool installed, run the command `apktool d groupme.apk` to decompile the app. This will create a new folder with the same name as the original apk, in this case `./groupme/`.
 ## Step 3: Injecting the CA Certificate
 
-Navigate to the base app folder, `./groupme/`, and open `AndroidManifest.xml` in a text editor. Locate the `application` tag. It should look something like: `<application android:allowBackup="false" ... />` add the following attribute to the `application` tag: `android:networkSecurityConfig="@xml/network_security_config"`. Save and close the file.
+Navigate to the base app folder, `./groupme/`, and open `AndroidManifest.xml` in a text editor. Locate the `application` tag. It should look something like: `<application android:allowBackup="false" ... />` add the following attributes to the `application` tag: `android:networkSecurityConfig="@xml/network_security_config"` and `android:usesCleartextTraffic="true"`. Save and close the file.
 
 Navigate to `./groupme/res/xml/` and create a new file named `network_security_config.xml` with the following contents:
 ```
